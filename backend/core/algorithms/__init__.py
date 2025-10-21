@@ -4,6 +4,8 @@ Core training plan generation algorithms
 from .feasibility import analyze_goal_feasibility, FeasibilityAnalyzer
 from .plan_generator import generate_training_plan, TrainingPlanGenerator
 from .methodology_selector import select_optimal_methodology, MethodologySelector
+from .macrocycle_builder import build_macrocycle, MacrocycleBuilder
+from .mesocycle_generator import generate_mesocycles, MesocycleGenerator
 from .adaptation import adapt_training_plan, AdaptiveEngine
 
 __all__ = [
@@ -13,6 +15,10 @@ __all__ = [
     "TrainingPlanGenerator",
     "select_optimal_methodology",
     "MethodologySelector",
+    "build_macrocycle",
+    "MacrocycleBuilder",
+    "generate_mesocycles",
+    "MesocycleGenerator",
     "adapt_training_plan",
     "AdaptiveEngine",
 ]
