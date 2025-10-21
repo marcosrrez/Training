@@ -26,6 +26,7 @@ from .feasibility import analyze_goal_feasibility
 from .methodology_selector import select_optimal_methodology
 from .macrocycle_builder import build_macrocycle
 from .mesocycle_generator import generate_mesocycles
+from .microcycle_creator import create_microcycles
 
 
 class TrainingPlanGenerator:
@@ -123,9 +124,21 @@ class TrainingPlanGenerator:
 
         # Step 6: Create microcycles (weekly plans)
         print("\n📅 Step 6: Creating microcycles (weekly plans)...")
-        print("⚠️  Microcycle generation - TO BE IMPLEMENTED")
-        # TODO: Implement microcycle generation
-        microcycles = []
+        all_microcycles = []
+
+        for mesocycle in all_mesocycles:
+            meso_microcycles = create_microcycles(
+                mesocycle=mesocycle,
+                goals=goals,
+                constraints=constraints,
+                assessment=assessment,
+                start_date=start_date
+            )
+            all_microcycles.extend(meso_microcycles)
+
+            print(f"✓ Mesocycle {mesocycle.cycle_number}: {len(meso_microcycles)} weeks created")
+
+        print(f"✓ Total microcycles: {len(all_microcycles)} weeks")
 
         # Step 7: Populate individual workouts
         print("\n🏃 Step 7: Populating individual workouts...")
@@ -134,7 +147,7 @@ class TrainingPlanGenerator:
 
         # Step 8: Validate plan coherence
         print("\n✅ Step 8: Validating plan...")
-        self._validate_plan(macrocycle, all_mesocycles, constraints)
+        self._validate_plan(macrocycle, all_mesocycles, all_microcycles, constraints)
         print("✓ Plan validation passed")
 
         # Create the training plan object
@@ -149,7 +162,7 @@ class TrainingPlanGenerator:
             methodology=methodology,
             macrocycle=macrocycle,
             mesocycles=all_mesocycles,
-            microcycles=microcycles,
+            microcycles=all_microcycles,
             current_week=0
         )
 
@@ -161,6 +174,8 @@ class TrainingPlanGenerator:
         print(f"   Duration: {total_weeks} weeks")
         print(f"   Phases: {len(macrocycle.phases)}")
         print(f"   Mesocycles: {len(all_mesocycles)}")
+        print(f"   Microcycles: {len(all_microcycles)}")
+        print(f"   Total sessions: {sum(len(m.sessions) for m in all_microcycles)}")
         print(f"   Methodology: {methodology.name}")
 
         return plan
@@ -169,6 +184,7 @@ class TrainingPlanGenerator:
         self,
         macrocycle: Macrocycle,
         mesocycles: List[Mesocycle],
+        microcycles: List[Microcycle],
         constraints: Constraints
     ):
         """
@@ -177,6 +193,7 @@ class TrainingPlanGenerator:
         Checks:
         - Phases don't overlap and cover full duration
         - Mesocycles align with phases
+        - Microcycles cover all weeks
         - Volume progression is reasonable
         - Time constraints are respected
         """
@@ -192,6 +209,10 @@ class TrainingPlanGenerator:
         if total_mesocycle_weeks != total_weeks:
             raise ValueError(f"Mesocycle coverage mismatch: {total_mesocycle_weeks} weeks != {total_weeks} weeks")
 
+        # Check microcycles cover all weeks
+        if len(microcycles) != total_weeks:
+            raise ValueError(f"Microcycle count mismatch: {len(microcycles)} microcycles != {total_weeks} weeks")
+
         # Check volume constraints
         max_volume = constraints.time.total_weekly_hours or 10.0
         for meso in mesocycles:
@@ -200,6 +221,17 @@ class TrainingPlanGenerator:
                     f"Mesocycle {meso.cycle_number} volume ({meso.base_weekly_volume:.1f}h) "
                     f"exceeds constraint ({max_volume:.1f}h)"
                 )
+
+        # Check session counts
+        sessions_per_week = constraints.time.sessions_per_week
+        for micro in microcycles:
+            if not micro.is_recovery_week:
+                session_count = len(micro.sessions)
+                if session_count < sessions_per_week.min or session_count > sessions_per_week.max:
+                    raise ValueError(
+                        f"Week {micro.week_number} has {session_count} sessions, "
+                        f"but constraints specify {sessions_per_week.min}-{sessions_per_week.max}"
+                    )
 
         # All checks passed
         return True
