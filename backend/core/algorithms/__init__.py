@@ -6,6 +6,7 @@ from .plan_generator import generate_training_plan, TrainingPlanGenerator
 from .methodology_selector import select_optimal_methodology, MethodologySelector
 from .macrocycle_builder import build_macrocycle, MacrocycleBuilder
 from .mesocycle_generator import generate_mesocycles, MesocycleGenerator
+from .microcycle_creator import create_microcycles, MicrocycleCreator
 from .adaptation import adapt_training_plan, AdaptiveEngine
 
 __all__ = [
@@ -19,6 +20,8 @@ __all__ = [
     "MacrocycleBuilder",
     "generate_mesocycles",
     "MesocycleGenerator",
+    "create_microcycles",
+    "MicrocycleCreator",
     "adapt_training_plan",
     "AdaptiveEngine",
 ]
