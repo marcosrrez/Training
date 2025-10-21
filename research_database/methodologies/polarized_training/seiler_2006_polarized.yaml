@@ -1,0 +1,114 @@
+# Polarized Training Research - Seiler & Kjerland (2006)
+
+article_id: "seiler_2006_polarized_training"
+title: "Quantifying training intensity distribution in elite endurance athletes: is there evidence for an 'optimal' distribution?"
+authors:
+  - "Seiler, K.S."
+  - "Kjerland, G.Ø."
+journal: "Scandinavian Journal of Medicine & Science in Sports"
+year: 2006
+volume: 16
+issue: 1
+pages: "49-56"
+doi: "10.1111/j.1600-0838.2004.00418.x"
+url: "https://doi.org/10.1111/j.1600-0838.2004.00418.x"
+
+study_type: "descriptive_analysis"
+quality_score: 9
+sample_size: 44
+duration_weeks: 52  # Annual analysis
+
+abstract: |
+  This landmark study analyzed the training intensity distribution of elite endurance athletes
+  across multiple sports (running, cycling, cross-country skiing, rowing). The researchers found
+  that despite different sports and individual variations, elite athletes consistently trained
+  with a polarized intensity distribution: approximately 80% of training at low intensity,
+  <5% at moderate intensity, and 15-20% at high intensity. This became the foundation for
+  the "polarized training" or "80/20 rule" approach.
+
+key_findings:
+  - "Elite endurance athletes train ~80% of sessions below ventilatory threshold (Zone 1-2)"
+  - "Only ~20% of training is at or above threshold intensity (Zone 4-5)"
+  - "Very little time (<5%) spent in 'moderate' gray zone (Zone 3)"
+  - "This distribution is consistent across multiple endurance sports"
+  - "Pattern holds across preparation and competition phases with some variation"
+
+practical_applications:
+  - "Structure training with 4:1 ratio of easy to hard days"
+  - "Keep easy days truly easy (conversational pace, <70% max HR)"
+  - "Make hard days sufficiently hard (threshold or above)"
+  - "Avoid excessive moderate-intensity 'gray zone' training"
+  - "Example weekly structure: 4 easy runs, 1 threshold session, 1 interval session"
+  - "Total weekly volume: 80% easy, 20% hard by time or distance"
+
+study_design:
+  population:
+    description: "Elite national and international level endurance athletes"
+    age_range: [20, 35]
+    gender: "mixed"
+    training_status: "elite"
+    sample_size: 44
+    sports: ["running", "cycling", "cross_country_skiing", "rowing"]
+
+  intervention:
+    description: "Observational analysis of training logs"
+    duration_weeks: 52
+    frequency_per_week: "variable (6-12 sessions)"
+    session_duration_minutes: "variable"
+    protocol: |
+      Retrospective analysis of detailed training logs from elite athletes.
+      Training intensity was categorized into three zones based on blood lactate
+      and heart rate:
+      - Zone 1: Below aerobic threshold (~70% max HR, <2 mmol/L lactate)
+      - Zone 2: Aerobic threshold to anaerobic threshold (70-85% max HR)
+      - Zone 3: Above anaerobic threshold (>85% max HR, >4 mmol/L lactate)
+
+  outcomes:
+    primary:
+      - metric: "Training intensity distribution"
+        result: "~77% Zone 1, ~3% Zone 2, ~20% Zone 3"
+        variation: "Individual variation: 65-85% Zone 1, 15-25% Zone 3"
+      - metric: "Performance correlation"
+        result: "Higher polarization associated with better performance markers"
+
+limitations:
+  - "Observational study, not randomized controlled trial"
+  - "Elite athletes only - may not apply to recreational athletes"
+  - "Retrospective analysis of self-reported training logs"
+  - "No comparison with other intensity distributions"
+  - "Cultural/coaching bias (primarily Norwegian athletes)"
+
+conflicting_evidence:
+  - "Some studies show threshold-heavy training also effective (70/20/10 distribution)"
+  - "Pyramidal distribution (70/20/10) may work better for some individuals"
+  - "Debate continues on optimal distribution for different phases"
+
+relevant_to:
+  goal_types:
+    - "endurance"
+    - "hybrid"
+  populations:
+    - "intermediate_athletes"
+    - "advanced_athletes"
+    - "elite_athletes"
+  training_phases:
+    - "base_building"
+    - "build"
+    - "maintenance"
+  constraints:
+    - "4+ hours per week"
+    - "high_training_age"
+
+tags:
+  - "polarized_training"
+  - "intensity_distribution"
+  - "80_20_rule"
+  - "endurance"
+  - "elite_athletes"
+  - "training_zones"
+  - "lactate_threshold"
+
+related_studies:
+  - "stoggl_2014_polarized_vs_threshold"
+  - "munoz_2014_polarized_recreational"
+  - "esteve_lanao_2007_intensity_distribution"

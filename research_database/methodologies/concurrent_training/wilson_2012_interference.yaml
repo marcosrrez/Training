@@ -1,0 +1,140 @@
+# Concurrent Training Interference - Wilson et al. (2012)
+
+article_id: "wilson_2012_concurrent_training_meta"
+title: "Concurrent Training: A Meta-Analysis Examining Interference of Aerobic and Resistance Training"
+authors:
+  - "Wilson, J.M."
+  - "Marin, P.J."
+  - "Rhea, M.R."
+  - "Wilson, S.M."
+  - "Loenneke, J.P."
+  - "Anderson, J.C."
+journal: "Journal of Strength and Conditioning Research"
+year: 2012
+volume: 26
+issue: 8
+pages: "2293-2307"
+doi: "10.1519/JSC.0b013e31823a3e2d"
+url: "https://doi.org/10.1519/JSC.0b013e31823a3e2d"
+
+study_type: "meta_analysis"
+quality_score: 9
+sample_size: "21 studies, 422 subjects total"
+duration_weeks: "variable (4-24 weeks)"
+
+abstract: |
+  This comprehensive meta-analysis examined the interference effect when combining aerobic
+  and resistance training (concurrent training). The analysis found that concurrent training
+  does interfere with strength and power development compared to resistance training alone,
+  but the magnitude depends on training variables. Running caused greater interference than
+  cycling. Importantly, hypertrophy (muscle growth) is minimally affected. The key is
+  managing training variables: modality choice, frequency, intensity, and timing of sessions.
+
+key_findings:
+  - "Concurrent training reduces strength gains by ~31% vs resistance training alone"
+  - "Power development impaired by ~18% with concurrent training"
+  - "Hypertrophy (muscle size) minimally affected (~3% reduction, not statistically significant)"
+  - "Running causes greater interference than cycling (-29% vs -11% for lower body strength)"
+  - "High-frequency aerobic training (>3x/week) causes more interference"
+  - "Longer aerobic sessions (>30 min) have greater negative impact"
+  - "Proper separation between sessions reduces interference"
+  - "Strength training before cardio in same session is preferable"
+
+practical_applications:
+  - "Choose cycling over running for aerobic work if maximal strength is priority"
+  - "Limit aerobic sessions to 3x per week if focusing on strength gains"
+  - "Keep aerobic sessions under 30 minutes when possible"
+  - "Separate strength and cardio by 6+ hours (or different days) when possible"
+  - "If training same day: strength before cardio reduces interference"
+  - "Moderate intensity (Zone 2) aerobic work less interfering than high intensity"
+  - "Hypertrophy goals compatible with endurance training (minimal interference)"
+  - "For hybrid athletes: prioritize cycling or rowing over running"
+  - "Use periodization: emphasize strength in some blocks, endurance in others"
+
+study_design:
+  population:
+    description: "Meta-analysis of studies with various populations"
+    age_range: [18, 45]
+    gender: "primarily male"
+    training_status: "ranging from untrained to trained"
+    sample_size: 422
+
+  intervention:
+    description: "Concurrent aerobic + resistance training vs resistance only"
+    duration_weeks: "4-24 weeks across studies"
+    frequency_per_week: "2-5 sessions each modality"
+    protocol: |
+      Analysis compared three groups across studies:
+      1. Resistance training only
+      2. Aerobic training only
+      3. Concurrent training (resistance + aerobic)
+
+      Outcomes measured: strength (1RM), power, hypertrophy (muscle size)
+
+  outcomes:
+    primary:
+      - metric: "Strength development (1RM)"
+        impact: "-31% reduction with concurrent vs resistance only"
+        effect_size: -0.28
+        p_value: 0.001
+      - metric: "Power development"
+        impact: "-18% reduction with concurrent training"
+        effect_size: -0.20
+        p_value: 0.05
+      - metric: "Hypertrophy (muscle size)"
+        impact: "-3% reduction (not statistically significant)"
+        effect_size: -0.05
+        p_value: 0.22
+
+    moderator_analysis:
+      - variable: "Aerobic modality"
+        finding: "Running: -29% strength | Cycling: -11% strength"
+      - variable: "Aerobic frequency"
+        finding: ">3x/week more interference than ≤3x/week"
+      - variable: "Aerobic duration"
+        finding: ">30 min sessions more interference"
+
+limitations:
+  - "High heterogeneity across studies (different protocols, populations)"
+  - "Most studies relatively short duration (< 12 weeks)"
+  - "Limited data on elite athletes"
+  - "Few studies examined long-term adaptation (6+ months)"
+  - "Optimal session spacing not fully quantified"
+
+conflicting_evidence:
+  - "Some studies show minimal interference with proper periodization"
+  - "Well-trained athletes may adapt better to concurrent training"
+  - "Long-term studies (>6 months) show less interference as adaptation occurs"
+  - "Individual variation in response is substantial"
+
+relevant_to:
+  goal_types:
+    - "hybrid"
+    - "strength"
+    - "endurance"
+    - "composition"
+  populations:
+    - "beginners"
+    - "intermediate_athletes"
+    - "advanced_athletes"
+  training_phases:
+    - "all_phases"
+  constraints:
+    - "limited_time"
+    - "same_day_training"
+
+tags:
+  - "concurrent_training"
+  - "interference_effect"
+  - "hybrid_athlete"
+  - "strength_training"
+  - "aerobic_training"
+  - "periodization"
+  - "exercise_order"
+  - "modality_selection"
+
+related_studies:
+  - "coffey_2009_molecular_interference"
+  - "hickson_1980_concurrent_training"
+  - "murach_2016_interference_mechanisms"
+  - "docherty_2000_interference_recovery"

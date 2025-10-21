@@ -1,0 +1,107 @@
+# Research Article Template
+
+article_id: "unique_identifier_year_author"
+title: "Full Article Title"
+authors:
+  - "Last Name, First Initial."
+  - "Last Name, First Initial."
+journal: "Journal Name"
+year: 2023
+volume: 123
+issue: 4
+pages: "123-456"
+doi: "10.1234/journal.2023.123456"
+url: "https://doi.org/10.1234/journal.2023.123456"
+
+# Study characteristics
+study_type: "meta_analysis"  # meta_analysis, RCT, cohort, case_study, review
+quality_score: 8  # 1-10 scale
+sample_size: 100
+duration_weeks: 12
+
+# Abstract
+abstract: |
+  Brief summary of the study purpose, methods, results, and conclusions.
+  Keep this concise but comprehensive.
+
+# Key findings
+key_findings:
+  - "Finding 1: Specific result with effect size if available"
+  - "Finding 2: Another important result"
+  - "Finding 3: Additional findings"
+
+# Practical applications
+practical_applications:
+  - "How to apply this research in training program design"
+  - "Specific protocol recommendations"
+  - "Dosage and timing considerations"
+
+# Study details
+study_design:
+  population:
+    description: "Who was studied"
+    age_range: [18, 45]
+    gender: "mixed"  # male, female, mixed
+    training_status: "trained"  # untrained, recreationally_trained, trained, highly_trained, elite
+    sample_size: 100
+
+  intervention:
+    description: "What was done"
+    duration_weeks: 12
+    frequency_per_week: 4
+    session_duration_minutes: 60
+    protocol: "Detailed protocol description"
+
+  control:
+    description: "Control group or comparison"
+
+  outcomes:
+    primary:
+      - metric: "VO2max"
+        improvement: "+8%"
+        effect_size: 0.65
+        p_value: 0.001
+    secondary:
+      - metric: "Lactate threshold"
+        improvement: "+5%"
+        effect_size: 0.42
+        p_value: 0.01
+
+# Limitations
+limitations:
+  - "Limitation 1: e.g., small sample size"
+  - "Limitation 2: e.g., short duration"
+  - "Limitation 3: e.g., specific population"
+
+# Conflicting evidence
+conflicting_evidence:
+  - "Other studies that found different results"
+  - "Conditions under which findings may not apply"
+
+# Relevance
+relevant_to:
+  goal_types:
+    - "endurance"
+    - "hybrid"
+  populations:
+    - "intermediate_runners"
+    - "advanced_runners"
+  training_phases:
+    - "base_building"
+    - "build"
+  constraints:
+    - "4-6 hours per week"
+    - "high_injury_risk"
+
+# Tags for categorization
+tags:
+  - "polarized_training"
+  - "vo2max"
+  - "endurance"
+  - "running"
+  - "intensity_distribution"
+
+# Related research
+related_studies:
+  - "article_id_of_related_study_1"
+  - "article_id_of_related_study_2"
