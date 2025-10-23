@@ -7,7 +7,8 @@ from .methodology_selector import select_optimal_methodology, MethodologySelecto
 from .macrocycle_builder import build_macrocycle, MacrocycleBuilder
 from .mesocycle_generator import generate_mesocycles, MesocycleGenerator
 from .microcycle_creator import create_microcycles, MicrocycleCreator
-from .adaptation import adapt_training_plan, AdaptiveEngine
+from .workout_builder import build_workout, WorkoutBuilder
+from .adaptation_engine import analyze_and_adapt, AdaptationEngine
 
 __all__ = [
     "analyze_goal_feasibility",
@@ -22,6 +23,8 @@ __all__ = [
     "MesocycleGenerator",
     "create_microcycles",
     "MicrocycleCreator",
-    "adapt_training_plan",
-    "AdaptiveEngine",
+    "build_workout",
+    "WorkoutBuilder",
+    "analyze_and_adapt",
+    "AdaptationEngine",
 ]
