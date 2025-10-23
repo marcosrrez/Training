@@ -87,7 +87,8 @@ class WorkoutBuilder:
             workout_id=session.session_id,
             name=self._generate_workout_name(session, phase_name),
             description=session.coaching_notes,
-            type=WorkoutType.ENDURANCE
+            type=WorkoutType.ENDURANCE,
+            difficulty_rating=self._rate_difficulty(session.category)
         )
 
         # Calculate target paces from VO2max
@@ -125,8 +126,7 @@ class WorkoutBuilder:
                     week_number=week_number
                 )
 
-        # Add workout metadata
-        workout.difficulty_rating = self._rate_difficulty(session.category)
+        # Add additional workout metadata
         workout.estimated_duration_minutes = session.estimated_duration_minutes
         workout.coaching_notes = session.coaching_notes
 
@@ -406,7 +406,8 @@ class WorkoutBuilder:
             workout_id=session.session_id,
             name=f"Strength Training - {session.category.value.title()}",
             description="Strength training to support running and build power",
-            type=WorkoutType.STRENGTH
+            type=WorkoutType.STRENGTH,
+            difficulty_rating=self._rate_difficulty(session.category)
         )
 
         # Warmup
@@ -647,7 +648,8 @@ class WorkoutBuilder:
             workout_id=session.session_id,
             name=f"Cycling - {session.category.value.title()}",
             description="Cycling session (low impact alternative to running)",
-            type=WorkoutType.ENDURANCE
+            type=WorkoutType.ENDURANCE,
+            difficulty_rating=self._rate_difficulty(session.category)
         )
 
         main = WorkoutBlock(
@@ -671,7 +673,8 @@ class WorkoutBuilder:
             workout_id=session.session_id,
             name=f"{session.type.value.title()} Session",
             description=session.coaching_notes,
-            type=WorkoutType.ENDURANCE
+            type=WorkoutType.ENDURANCE,
+            difficulty_rating=self._rate_difficulty(session.category)
         )
 
         main = WorkoutBlock(

@@ -8,8 +8,8 @@ This implements the main plan generation flow:
 2. Select methodology
 3. Build periodization structure (macrocycle)
 4. Generate mesocycles (training blocks)
-5. Create microcycles (weekly plans) - TODO
-6. Populate individual workouts - TODO
+5. Create microcycles (weekly plans)
+6. Populate individual workouts
 7. Validate plan coherence
 
 Research basis: Integration of multiple periodization models and training methods
@@ -27,6 +27,7 @@ from .methodology_selector import select_optimal_methodology
 from .macrocycle_builder import build_macrocycle
 from .mesocycle_generator import generate_mesocycles
 from .microcycle_creator import create_microcycles
+from .workout_builder import WorkoutBuilder
 
 
 class TrainingPlanGenerator:
@@ -142,8 +143,38 @@ class TrainingPlanGenerator:
 
         # Step 7: Populate individual workouts
         print("\n🏃 Step 7: Populating individual workouts...")
-        print("⚠️  Workout generation - TO BE IMPLEMENTED")
-        # TODO: Implement workout generation
+
+        workout_builder = WorkoutBuilder()
+        total_workouts = 0
+
+        # Create phase lookup map for quick access
+        phase_map = {}
+        for phase in macrocycle.phases:
+            for week_num in range(phase.start_week, phase.end_week + 1):
+                phase_map[week_num] = phase.name
+
+        # Generate workouts for each session
+        for microcycle in all_microcycles:
+            week_number = microcycle.week_number
+            phase_name = phase_map.get(week_number, "Base")  # Default to Base if not found
+
+            for session in microcycle.sessions:
+                # Build the workout
+                workout = workout_builder.build(
+                    session=session,
+                    assessment=assessment,
+                    constraints=constraints,
+                    week_number=week_number,
+                    phase_name=phase_name
+                )
+
+                # Assign workout to session
+                # In production, we'd save the workout to MongoDB and store the ID
+                # For now, we just track the count
+                session.workout_id = workout.workout_id
+                total_workouts += 1
+
+        print(f"✓ Generated {total_workouts} complete workouts with detailed prescriptions")
 
         # Step 8: Validate plan coherence
         print("\n✅ Step 8: Validating plan...")
@@ -176,6 +207,7 @@ class TrainingPlanGenerator:
         print(f"   Mesocycles: {len(all_mesocycles)}")
         print(f"   Microcycles: {len(all_microcycles)}")
         print(f"   Total sessions: {sum(len(m.sessions) for m in all_microcycles)}")
+        print(f"   Total workouts: {total_workouts}")
         print(f"   Methodology: {methodology.name}")
 
         return plan
@@ -194,6 +226,7 @@ class TrainingPlanGenerator:
         - Phases don't overlap and cover full duration
         - Mesocycles align with phases
         - Microcycles cover all weeks
+        - All sessions have workouts
         - Volume progression is reasonable
         - Time constraints are respected
         """
@@ -231,6 +264,15 @@ class TrainingPlanGenerator:
                     raise ValueError(
                         f"Week {micro.week_number} has {session_count} sessions, "
                         f"but constraints specify {sessions_per_week.min}-{sessions_per_week.max}"
+                    )
+
+        # Check all sessions have workouts
+        for micro in microcycles:
+            for session in micro.sessions:
+                if not session.workout_id:
+                    raise ValueError(
+                        f"Session {session.session_id} in week {micro.week_number} "
+                        f"is missing workout prescription"
                     )
 
         # All checks passed

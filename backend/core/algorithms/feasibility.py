@@ -111,7 +111,7 @@ class FeasibilityAnalyzer:
         risks = self._identify_risks(
             assessment=assessment,
             required_improvement=improvement_percentage,
-            timeline_ratio=weeks_available / weeks_needed if weeks_needed > 0 else 1.0
+            timeline_ratio=weeks_until_goal / weeks_needed if weeks_needed > 0 else 1.0
         )
 
         # Generate recommendation
